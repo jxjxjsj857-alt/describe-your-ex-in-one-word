@@ -37,9 +37,11 @@ function isSingleWord(text: string): boolean {
   return /^[A-Za-z]+$/.test(text);
 }
 
-// Words the judge's own brief calls out as filler: a word from
-// this list would lose to any chosen word, so refuse it outright
-// instead of shipping it.
+// Words that would lose to any crafted verdict: plain insults
+// ("toxic"), flat labels ("mistake", "regret") and safe filler
+// ("thing", "stuff", "good", "nice", "the", "word",
+// "interesting"). The judge weighs comic punch over a plain
+// insult, so refuse any of these outright instead of shipping one.
 const FILLER_WORDS = new Set([
   "thing",
   "stuff",
